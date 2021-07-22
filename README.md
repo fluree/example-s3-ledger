@@ -27,15 +27,15 @@ This README will assume you are setting AWS config and credentials within the lo
 Ensure the following:
 
 - `/.aws/config`
-  - You have a profile name (e.g. `[profile fluree-sandbox]`) that matches the `AWS_DEFAULT_PROFILE` value within `/demo.env`
+  - You have a profile name (e.g. `[profile fluree-sandbox]`) that matches the `AWS_DEFAULT_PROFILE` value within `docker-compose.yaml`'s `services.fluree.environment` vars
 - `/.aws/credentials`
   - You have a profile name (e.g. `[fluree-sandbox]`) that matches the profile name in `./aws/config` and that includes keys that are capable of read/write to your bucket
-- `demo.env`
-  - Your `FDB_STORAGE_S3_BUCKET` value should be the name of your S3 bucket (e.g. `fluree-s3-test`)
+- `docker-compose.yaml`
+  - Your `FDB_STORAGE_S3_BUCKET` value in your `services.fluree.environment` vars should be the name of your S3 bucket (e.g. `fluree-s3-test`)
 
 ### Customizing Fluree
 
-Fluree will work without changing any of its configuration. However, if you want to change any of Fluree's configuration, you can do so by providing additional env vars within the `/demo.env` file.
+Fluree will work without changing any of its configuration. However, if you want to change any of Fluree's configuration, you can do so by providing additional env vars within the `docker-compose.yaml` file.
 
 Information regarding configurable Fluree settings is available online. The `Getting Started -> Installation` section provides insight on installing and customizing Fluree (https://docs.flur.ee/docs/getting-started/installation).
 
@@ -44,7 +44,7 @@ Information regarding configurable Fluree settings is available online. The `Get
 Once you've provided necessary AWS config and any additional Fluree config, you can start Fluree by running the following from the directory where you cloned the repo.
 
 ```
-docker-compose --env-file ./demo.env up
+docker-compose up
 ```
 
 You can then navigate to `http://localhost:8090` to see Fluree's AdminUI interface.

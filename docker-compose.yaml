@@ -1,10 +1,14 @@
 version: '3.7'
 services:
   fluree:
-    image: fluree/ledger:v1.0.0-beta11
+    image: fluree/ledger:v1.0.0-beta12
     container_name: fluree
     networks:
       - default
+    environment:
+      fdb_storage_type: s3
+      fdb_storage_s3_bucket: YOUR_S3_BUCKET_NAME
+      aws_default_profile: fluree-sandbox
     ports:
       - '8090:8090'
       - '9790:9790'
