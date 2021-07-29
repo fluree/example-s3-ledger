@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   fluree:
-    image: fluree/ledger:v1.0.0-beta12
+    image: fluree/ledger:v1.0.0-beta13
     container_name: fluree
     networks:
       - default

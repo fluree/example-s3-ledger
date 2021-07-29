@@ -51,6 +51,12 @@ You can then navigate to `http://localhost:8090` to see Fluree's AdminUI interfa
 
 After adding a new ledger, you should immediately begin to see your S3 bucket populated with the persistent files necessary for Fluree to maintain its ledger data and RAFT state.
 
+### Troubleshooting
+
+Note that Fluree should be allowed to gracefully shutdown whenever possible in order to preserve its most recent RAFT state snapshot. As such, you should allow your docker container to gracefully shutdown rather than immediately killing the process.
+
+When running from the command line, this means using `docker-compose stop` or `docker stop CONTAINER_ID` rather than, for example, killing the thread if the container is running in the foreground of your terminal.
+
 ## License
 
 This project is licensed under the terms of the MIT license.
